@@ -36,6 +36,7 @@ boxes.forEach ((box)=>{
     });
 });
 
+
 const newgame = () =>{
     turno = true;
     enablebox();
@@ -72,7 +73,20 @@ const checkwinner = () => {
             }
         }
     }
+    let count = 0;
+    for(let box of boxes){
+        if(box.innerText !== ""){
+            count++;
+        }
+    }
+
+    if(count === 9){
+        msg.innerText = "Match Draw ! Play again";
+        msgcontainer.classList.remove("hide");
+        disablebox();
+    }
 };
+
 
 resetbutton.addEventListener("click",resetgame);
 newbutn.addEventListener("click",newgame);
